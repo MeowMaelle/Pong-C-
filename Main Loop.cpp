@@ -19,7 +19,7 @@ int main(){
         refresh();
         erase();
         getch();
-        timeout(16)
+        timeout(16);
     }
     endwin();
     return 0;
