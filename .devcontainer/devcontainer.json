@@ -1,0 +1,10 @@
+{
+  "name": "C++",
+  "image": "mcr.microsoft.com/devcontainers/cpp:debian",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libncurses-dev",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-vscode.cpptools-extension-pack"]
+    }
+  }
+}
