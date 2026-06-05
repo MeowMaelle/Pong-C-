@@ -3,6 +3,8 @@
 
 #include <random>
 
+inline double random_double();
+
 class vec2{
     public:
     vec2(double x, double y) : x(x), y(y) {}
