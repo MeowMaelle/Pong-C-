@@ -5,9 +5,10 @@
 #include "vec2.h"
 using namespace std;
 
-ArenaBorder arena(10, 50);
-paddle p1(2, 1);
-paddle p2(2,1);
+ArenaBorder arena(10, 60);
+paddle p1(2, vec2(59, 1));
+paddle p2(2, vec2(1, 1));
+bool quit = false;
 void tickInput(paddle& P1, paddle& P2);
 
 int main(){
@@ -17,41 +18,26 @@ int main(){
     cbreak(); // keys register istantly (they dont wait for me to click enter)
     keypad(stdscr, TRUE); // arrow keys register as their own code rather than a weird set of chars
     curs_set(0);
-    arena.renderArena();
-    while (true){
-        refresh();
+    timeout(200);
+    while (not quit){
         erase();
+        arena.renderArena();
+        p1.renderPaddle();
+        p2.renderPaddle();
         tickInput(p1, p2);
-        timeout(16);
+        refresh();
     }
     endwin();
     return 0;
 }
 
 void tickInput(paddle& P1, paddle& P2){
-    bool P2move = false;
-    bool P1move = false;
-    while ((getch() != ERR) || not(P2move && P1move)){
-        if ((char(getch()) == 'w') && not P1move){
-            P1.movePaddle(1);
-            P1move = true;
-        }
-        if ((char(getch()) == 's') && not P1move){
-            P1.movePaddle(-1);
-            P1move = true;
-        }
-        if ((getch() == KEY_UP) && not P2move){
-            P2.movePaddle(1);
-            P2move = true;
-        }
-        if ((getch() == KEY_DOWN) && not P2move){
-            P2.movePaddle(-1);
-            P2move = true;
-        }
+    int chr;
+    while ((chr = getch()) != ERR){
+        if (chr == 'w') {P1.movePaddle(1);}
+        if (chr == 's') {P1.movePaddle(-1);}
+        if (chr == KEY_UP) {P2.movePaddle(1);}
+        if (chr == KEY_DOWN) {P2.movePaddle(-1);}
+        if (chr == 'q') {quit = true;}
     }
-    while (getch() != ERR)
-    {
-        auto temp = getch();
-    }
-    
 }

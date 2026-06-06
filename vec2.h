@@ -15,6 +15,13 @@ class vec2{
     double gety(){
         return y;
     }
+
+    void setx(double pos){
+        x = pos;
+    }
+    void sety(double pos){
+        y = pos;
+    }
     static vec2 randomUV(){ // Generate a Random Unit Vector
         vec2 TempVec(random_double(), random_double());
         (TempVec.x < TempVec.y) ? (TempVec/=TempVec.x) : TempVec/=TempVec.y;
