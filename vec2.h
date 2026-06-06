@@ -2,6 +2,7 @@
 #define VEC2_H
 
 #include <random>
+#include <cmath>
 
 inline double random_double();
 
@@ -24,7 +25,7 @@ class vec2{
     }
     static vec2 randomUV(){ // Generate a Random Unit Vector
         vec2 TempVec(random_double(), random_double());
-        (TempVec.x < TempVec.y) ? (TempVec/=TempVec.x) : TempVec/=TempVec.y;
+        TempVec /= sqrt(TempVec.x*TempVec.x + TempVec.y*TempVec.y);
         return TempVec;
     }
 

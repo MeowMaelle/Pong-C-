@@ -13,12 +13,12 @@ class paddle {
     };
 
     void renderPaddle(){
-        mvvline(position.getx(), position.gety(), '|', size);
+        mvvline(position.gety(), position.getx(), '|', size);
     }
 
     private:
-    vec2 position;
     int size;
+    vec2 position;
 };
 
 #endif
