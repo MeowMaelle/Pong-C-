@@ -3,13 +3,16 @@
 
 #include <ncurses.h>
 #include "vec2.h"
+#include "arena.h"
 
 class paddle {
     public:
     paddle(int size, vec2 position) : size(size), position(position) {};
 
-    void movePaddle(int amount){
-        position.sety(position.gety() + amount);
+    void movePaddle(int amount, ArenaBorder arena){
+        if(((amount == -1) && (position.gety() > 1)) || ((amount == 1) && ((position.gety() + size) < (arena.getH()-1)))){
+            position.sety(position.gety() + amount);
+        };
     };
 
     void renderPaddle(){

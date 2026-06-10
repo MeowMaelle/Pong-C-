@@ -5,7 +5,10 @@
 #include "vec2.h"
 using namespace std;
 
-ArenaBorder arena(10, 60);
+int arenaWidth = 60;
+int arenaHeight = 20;
+
+ArenaBorder arena(arenaHeight, arenaWidth);
 paddle p1(2, vec2(1, 1));
 paddle p2(2, vec2(58, 1));
 bool quit = false;
@@ -43,6 +46,6 @@ void tickInput(paddle& P1, paddle& P2){
         else if (chr == KEY_DOWN)  p2dir = 1;
         else if (chr == 'q')       quit = true;
     }
-    if (p1dir) P1.movePaddle(p1dir);     // ...then move once, after the buffer's empty
-    if (p2dir) P2.movePaddle(p2dir);
+    if (p1dir) P1.movePaddle(p1dir, arena);     // ...then move once, after the buffer's empty
+    if (p2dir) P2.movePaddle(p2dir, arena);
 }
