@@ -35,6 +35,12 @@ class vec2{
         return *this;
     }
 
+    vec2& operator+=(vec2 v){
+        x += v.getx();
+        y += v.gety();
+        return *this;
+    }
+
     private:
     double x;
     double y;

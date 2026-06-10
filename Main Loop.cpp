@@ -11,6 +11,7 @@ int arenaHeight = 20;
 ArenaBorder arena(arenaHeight, arenaWidth);
 paddle p1(2, vec2(1, 1));
 paddle p2(2, vec2(58, 1));
+ball Bol(vec2(0,0), vec2(0,0));
 bool quit = false;
 void tickInput(paddle& P1, paddle& P2);
 
@@ -24,9 +25,11 @@ int main(){
     while (not quit){
         erase();
         tickInput(p1, p2);
+        Bol.Update(arena, p1, p2);
         arena.renderArena();
         p1.renderPaddle();
         p2.renderPaddle();
+        Bol.renderBall();
         refresh();
         napms(16);
     }

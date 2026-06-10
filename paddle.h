@@ -19,6 +19,20 @@ class paddle {
         mvvline(position.gety(), position.getx(), '|', size);
     }
 
+    int getSize(){
+        return size;
+    }
+
+    int getPosY(){
+        return position.gety();
+    }
+
+    int getPosX(){
+        return position.getx();
+    }
+
+
+
     private:
     int size;
     vec2 position;
