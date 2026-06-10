@@ -15,7 +15,6 @@ bool quit = false;
 void tickInput(paddle& P1, paddle& P2);
 
 int main(){
-
     initscr();
     noecho(); // Stope Typed Keyes Showing on the screen as text
     cbreak(); // keys register istantly (they dont wait for me to click enter)
