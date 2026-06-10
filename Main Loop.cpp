@@ -22,6 +22,7 @@ int main(){
     keypad(stdscr, TRUE); // arrow keys register as their own code rather than a weird set of chars
     curs_set(0);
     nodelay(stdscr, TRUE);
+    Bol.spawnBall(arena);
     while (not quit){
         erase();
         tickInput(p1, p2);
