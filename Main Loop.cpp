@@ -6,8 +6,8 @@
 using namespace std;
 
 ArenaBorder arena(10, 60);
-paddle p1(2, vec2(58, 1));
-paddle p2(2, vec2(1, 1));
+paddle p1(2, vec2(1, 1));
+paddle p2(2, vec2(58, 1));
 bool quit = false;
 void tickInput(paddle& P1, paddle& P2);
 
