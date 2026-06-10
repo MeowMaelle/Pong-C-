@@ -26,18 +26,23 @@ int main(){
         p1.renderPaddle();
         p2.renderPaddle();
         refresh();
+        napms(16);
     }
     endwin();
     return 0;
 }
 
 void tickInput(paddle& P1, paddle& P2){
+    int p1dir = 0;   // -1 = up, +1 = down, 0 = nothing this frame
+    int p2dir = 0;
     int chr;
-    while ((chr = getch()) != ERR){
-        if (chr == 'w') {P1.movePaddle(-1);}
-        if (chr == 's') {P1.movePaddle(1);}
-        if (chr == KEY_UP) {P2.movePaddle(-1);}
-        if (chr == KEY_DOWN) {P2.movePaddle(1);}
-        if (chr == 'q') {quit = true;}
+    while ((chr = getch()) != ERR){      // drain the ENTIRE buffer
+        if      (chr == 'w')       p1dir = -1;   // just record intent...
+        else if (chr == 's')       p1dir = 1;
+        else if (chr == KEY_UP)    p2dir = -1;
+        else if (chr == KEY_DOWN)  p2dir = 1;
+        else if (chr == 'q')       quit = true;
     }
+    if (p1dir) P1.movePaddle(p1dir);     // ...then move once, after the buffer's empty
+    if (p2dir) P2.movePaddle(p2dir);
 }
